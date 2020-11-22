@@ -1,0 +1,33 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: spring-cloud-kub-service
+spec:
+  selector:
+    app:  spring-cloud-kub
+  ports:
+    - protocol: TCP
+      port: 8080
+      nodePort: 30083
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  spring-cloud-kub-deployment
+spec:
+  selector:
+    matchLabels:
+      app:  spring-cloud-kub
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app:  spring-cloud-kub
+    spec:
+      containers:
+        - name: spring-cloud-kub
+          image: spring-cloud-kubernetes
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080

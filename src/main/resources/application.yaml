@@ -1,0 +1,8 @@
+logging.level.org.springframework.cloud.kubernetes: DEBUG
+spring.application.name: spring-cloud-kub
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,refresh,keepalive,health

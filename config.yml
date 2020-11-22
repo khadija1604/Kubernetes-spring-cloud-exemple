@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+   name: config-service
+data:
+    application.properties: |-
+        khadija.message= Welcome to my kubernetes config project from kub cluster
+        message=Welcome to my first config project kubernetes cluster
